@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#050505" name="theme-color"/>
+<title>_3𝒶ℬ𝓊𝒞𝓊ℳℴ𝒞𝒯𝒷_ — personal space</title>
+<style>
+:root {
+  --bg:#050505;
+  --glass:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.14);
+  --text:#f5f5f5;
+  --muted:#a9a9a9;
+  --accent:#d7d7d7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:-20%;z-index:-4;
+  background:
+    radial-gradient(circle at 18% 20%,rgba(255,255,255,.07),transparent 24%),
+    radial-gradient(circle at 82% 55%,rgba(255,255,255,.045),transparent 28%),
+    radial-gradient(circle at 45% 100%,rgba(255,255,255,.035),transparent 25%);
+  filter:blur(30px);
+}
+.smoke,.smoke:before,.smoke:after{
+  position:fixed;inset:-25%;content:"";z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(255,255,255,.07),transparent 22%),
+    radial-gradient(ellipse at 75% 35%,rgba(255,255,255,.055),transparent 25%),
+    radial-gradient(ellipse at 45% 75%,rgba(255,255,255,.035),transparent 24%);
+  filter:blur(55px);opacity:.55;animation:drift 20s ease-in-out infinite alternate;
+}
+.smoke:before{animation-duration:28s;transform:translate(8%,-5%) scale(1.15)}
+.smoke:after{animation-duration:34s;transform:translate(-7%,7%) scale(.9)}
+@keyframes drift{from{transform:translate(-3%,2%) scale(1)}to{transform:translate(5%,-4%) scale(1.12)}}
+
+.noise{
+  position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+.container{width:min(1100px,calc(100% - 32px));margin:auto}
+nav{
+  position:fixed;top:14px;left:50%;transform:translateX(-50%);
+  width:min(980px,calc(100% - 24px));z-index:30;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 12px 10px 18px;border:1px solid var(--line);
+  border-radius:22px;background:rgba(15,15,15,.48);
+  backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px);
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+}
+.logo{font-weight:700;letter-spacing:.04em;font-size:14px}
+.navlinks{display:flex;gap:6px}
+.navlinks a{
+  color:#ddd;text-decoration:none;font-size:12px;padding:8px 11px;border-radius:14px;
+  transition:.3s
+}
+.navlinks a:hover{background:rgba(255,255,255,.09);color:#fff}
+.hero{
+  min-height:100svh;display:grid;place-items:center;padding:110px 0 70px;
+  position:relative;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.kicker{color:#9f9f9f;font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(42px,8vw,86px);line-height:.95;margin:0 0 18px;letter-spacing:-.055em}
+.subtitle{font-size:clamp(15px,2vw,19px);color:#aaa;line-height:1.6;max-width:560px}
+.hero-photo{
+  position:relative;padding:9px;border:1px solid rgba(255,255,255,.18);
+  border-radius:30px;background:rgba(255,255,255,.06);
+  box-shadow:0 30px 100px rgba(0,0,0,.6);
+  transform:rotate(1deg);transition:transform .6s ease;
+}
+.hero-photo:hover{transform:rotate(0deg) translateY(-6px)}
+.hero-photo:after{
+  content:"";position:absolute;inset:0;border-radius:30px;pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.22),transparent 18%,transparent 72%,rgba(255,255,255,.06));
+}
+.hero-photo img{display:block;width:100%;height:min(70vh,650px);object-fit:cover;border-radius:22px}
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 20px 80px rgba(0,0,0,.32)}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.socials a{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 15px;border-radius:16px;
+  color:#f4f4f4;text-decoration:none;font-size:13px;
+  transition:transform .3s,background .3s,border-color .3s;
+}
+.socials a:hover{transform:translateY(-3px);background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.25)}
+.dot{width:7px;height:7px;border-radius:50%;background:#eee;box-shadow:0 0 14px rgba(255,255,255,.65)}
+section{padding:100px 0}
+.section-title{font-size:clamp(28px,5vw,48px);letter-spacing:-.04em;margin:0 0 12px}
+.section-sub{color:#888;margin:0 0 30px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{padding:24px;border-radius:24px;min-height:150px}
+.card h3{margin:0 0 10px;font-size:18px}
+.card p{margin:0;color:#929292;line-height:1.6;font-size:14px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.photo-card{padding:0;border:1px solid var(--line);background:transparent;border-radius:22px;overflow:hidden;cursor:pointer;aspect-ratio:3/4}
+.photo-card:nth-child(4n){aspect-ratio:4/3}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,filter .6s ease}
+.photo-card:hover img{transform:scale(1.045);filter:brightness(1.08)}
+.quote{padding:38px;border-radius:28px;text-align:center}
+.quote p{font-size:clamp(20px,4vw,34px);line-height:1.35;margin:0;letter-spacing:-.02em}
+.quote span{display:block;margin-top:18px;color:#666;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+footer{padding:50px 0 70px;color:#666;font-size:12px;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);z-index:100;display:none;place-items:center;padding:24px}
+.lightbox.open{display:grid}
+.lightbox img{max-width:min(92vw,1000px);max-height:88vh;object-fit:contain;border-radius:18px;box-shadow:0 30px 120px #000}
+.close{position:absolute;right:20px;top:18px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.scrollhint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#666;font-size:10px;letter-spacing:.25em;text-transform:uppercase}
+@media(max-width:800px){
+  .navlinks a:nth-child(-n+2){display:none}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .hero{padding-top:120px}
+  .hero-photo{order:-1}
+  .hero-photo img{height:62vh}
+  .cards{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  section{padding:70px 0}
+}
+
+#smokeCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20;opacity:.58;mix-blend-mode:screen;}
+.hero-photo,.photo-card{position:relative;}
+.hero-photo::after,.photo-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 105%,rgba(230,235,240,.10),transparent 45%);z-index:2;}
+@media (prefers-reduced-motion:reduce){#smokeCanvas{display:none!important}}
+</style>
+</head>
+<body><canvas aria-hidden="true" id="smokeCanvas"></canvas>
+<div class="smoke"></div><div class="noise"></div>
+<nav>
+<div class="logo">_3𝒶ℬ𝓊𝒞𝓊ℳℴ𝒞𝒯𝒷_</div>
+<div class="navlinks">
+<a href="#about">about</a><a href="#bikes">bikes</a><a href="#photos">photos</a><a href="#links">links</a>
+</div>
+</nav>
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div class="reveal">
+<div class="kicker">personal space / 2026</div>
+<h1>_3𝒶ℬ𝓊𝒞𝓊ℳℴ𝒞𝒯𝒷_</h1>
+<p class="subtitle">Мотоциклы, фотографии, моменты и немного моей атмосферы. Без лишнего — просто то, что мне нравится.</p>
+<div class="socials">
+<a class="glass" href="https://t.me/zavisimyi298" rel="noopener" target="_blank"><span class="dot"></span>Telegram</a>
+<a class="glass" href="https://t.me/zavisimyi_298" rel="noopener" target="_blank"><span class="dot"></span>Telegram channel</a>
+<a class="glass" href="https://www.tiktok.com/@zavisimyi298" rel="noopener" target="_blank"><span class="dot"></span>TikTok</a>
+</div>
+</div>
+<div class="hero-photo reveal">
+<img alt="Я и мой мотоцикл" src="photo1.jpg"/>
+</div>
+</div>
+<div class="scrollhint">scroll ↓</div>
+</section>
+<section id="about">
+<div class="container">
+<div class="reveal">
+<h2 class="section-title">Немного обо мне</h2>
+<p class="section-sub">Не биография. Просто несколько вещей, которые меня описывают.</p>
+</div>
+<div class="cards">
+<article class="card glass reveal"><h3>🏍️ Мото</h3><p>Мотоциклы — одно из главных увлечений. Покатушки, обслуживание, восстановление и постоянное желание попробовать что-то новое.</p></article>
+<article class="card glass reveal"><h3>📸 Кадры</h3><p>Люблю сохранять моменты — от обычной фотографии мотоцикла до атмосферных кадров в лесу на закате.</p></article>
+<article class="card glass reveal"><h3>🖤 Свой путь</h3><p>Не люблю торопиться. Делаю то, что действительно интересно, и постепенно двигаюсь дальше.</p></article>
+</div>
+</div>
+</section>
+<section id="bikes">
+<div class="container">
+<div class="reveal">
+<h2 class="section-title">My bikes</h2>
+<p class="section-sub">То, вокруг чего крутится большая часть этой страницы.</p>
+</div>
+<div class="quote glass reveal">
+<p>«Мотоцикл — это не просто техника. Это часть пути, который ты запоминаешь.»</p>
+<span>_3𝒶ℬ𝓊𝒞𝓊ℳℴ𝒞𝒯𝒷_</span>
+</div>
+</div>
+</section>
+<section id="photos">
+<div class="container">
+<div class="reveal">
+<h2 class="section-title">Photos</h2>
+<p class="section-sub">Мои кадры. Нажми на фото, чтобы открыть его полностью.</p>
+</div>
+<div class="gallery"><button class="photo-card reveal" onclick="openLightbox(0)"><img alt="Фото 1" loading="lazy" src="photo2.jpg"/></button><button class="photo-card reveal" onclick="openLightbox(1)"><img alt="Фото 2" loading="lazy" src="photo3.jpg"/></button><button class="photo-card reveal" onclick="openLightbox(2)"><img alt="Фото 3" loading="lazy" src="photo4.jpg"/></button><button class="photo-card reveal" onclick="openLightbox(3)"><img alt="Фото 4" loading="lazy" src="photo5.jpg"/></button><button class="photo-card reveal" onclick="openLightbox(4)"><img alt="Фото 5" loading="lazy" src="photo6.jpg"/></button></div>
+</div>
+</section>
+<section id="links">
+<div class="container">
+<div class="quote glass reveal">
+<p>Если хочешь найти меня — ты знаешь, где искать.</p>
+<div class="socials" style="justify-content:center">
+<a class="glass" href="https://t.me/zavisimyi298" rel="noopener" target="_blank">Telegram</a>
+<a class="glass" href="https://t.me/zavisimyi_298" rel="noopener" target="_blank">Канал</a>
+<a class="glass" href="https://www.tiktok.com/@zavisimyi298" rel="noopener" target="_blank">TikTok</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>_3𝒶ℬ𝓊𝒞𝓊ℳℴ𝒞𝒯𝒷_ · 2026</footer>
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+<button aria-label="Закрыть" class="close">×</button>
+<img alt="" id="lightboxImg" src=""/>
+</div>
+<script>
+const photos = ['photo7.jpg', 'photo8.jpg', 'photo9.jpg', 'photo10.jpg', 'photo11.jpg'];
+function openLightbox(i) {
+  document.getElementById('lightboxImg').src = photos[i];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(e) {
+  if(e.target.id==='lightbox' || e.target.classList.contains('close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}});
+const obs = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Soft moving smoke: translucent particles slowly rise, drift sideways and dissolve.
+const canvas=document.getElementById('smokeCanvas');
+const ctx=canvas.getContext('2d');
+let W=0,H=0,DPR=1, smoke=[];
+function resizeSmoke(){
+  DPR=Math.min(window.devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
+  canvas.width=W*DPR; canvas.height=H*DPR; canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  smoke=[];
+  const count=Math.min(42,Math.max(22,Math.floor(W/28)));
+  for(let i=0;i<count;i++) smoke.push(newPuff(true));
+}
+function newPuff(randomY=false){
+  const size=18+Math.random()*65;
+  return {x:Math.random()*W,y:randomY?Math.random()*H:H+20+Math.random()*100,size,
+    vx:(Math.random()-.5)*.28,vy:-(.16+Math.random()*.34),
+    a:.025+Math.random()*.055,life:0,max:500+Math.random()*700,phase:Math.random()*Math.PI*2};
+}
+function drawSmoke(){
+  ctx.clearRect(0,0,W,H);
+  for(let p of smoke){
+    p.life++; p.phase+=.008; p.x+=p.vx+Math.sin(p.phase)*.18; p.y+=p.vy;
+    if(p.life>p.max || p.y<-p.size*2){Object.assign(p,newPuff(false));continue;}
+    const fade=Math.min(1,p.life/100)*Math.min(1,(p.max-p.life)/160);
+    const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size);
+    g.addColorStop(0,`rgba(235,240,245,${p.a*fade})`);
+    g.addColorStop(.55,`rgba(200,210,220,${p.a*.45*fade})`);
+    g.addColorStop(1,'rgba(180,190,200,0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+  }
+  requestAnimationFrame(drawSmoke);
+}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){resizeSmoke();addEventListener('resize',resizeSmoke);drawSmoke();}
+</script>
+</body>
+</html>
